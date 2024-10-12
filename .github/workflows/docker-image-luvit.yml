@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "${{ env.TARGET }}/**"
+      - 'luvit/**'
   pull_request:
     branches: [ "main" ]
   schedule:
