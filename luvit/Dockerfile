@@ -1,4 +1,3 @@
-# image for build
 FROM alpine:latest AS build
 RUN apk add --no-cache git build-base cmake perl linux-headers
 
