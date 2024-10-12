@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - "${{ env.TARGET }}/*"
+      - "${{ env.TARGET }}/**"
   pull_request:
     branches: [ "main" ]
   schedule:
