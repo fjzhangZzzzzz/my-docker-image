@@ -1,8 +1,13 @@
 name: Docker Image CI/CD
 
+env:
+  TARGET: luvit
+
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - "${{ env.TARGET }}/*"
   pull_request:
     branches: [ "main" ]
   schedule:
@@ -31,10 +36,10 @@ jobs:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Build luvit and push
+    - name: Build ${{ env.TARGET }} and push
       uses: docker/build-push-action@v6
       with:
-        context: ./luvit
+        context: ./${{ env.TARGET }}
         platforms: linux/amd64,linux/arm64
         push: true
-        tags: ${{ secrets.DOCKERHUB_USERNAME }}/luvit:latest
+        tags: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.TARGET }}:latest
